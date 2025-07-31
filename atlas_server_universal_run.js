@@ -1,12 +1,11 @@
 const express = require("express");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const bodyParser = require("body-parser");
-
+require('dotenv').config();
 const app = express();
 app.use(bodyParser.json());
 
-const uri =
-  "mongodb+srv://admin:YOUR_PASS@testcluster.cagmu.mongodb.net/?retryWrites=true&w=majority&appName=testCluster";
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
